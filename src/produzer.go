@@ -15,7 +15,6 @@ const (
 
 func main() {
     // create producer
-	sarama.Logger = log.New(os.Stdout, "", log.Ltime)
     producer, err := initProducer()
     if err != nil {
         fmt.Println("Error producer: ", err.Error())
@@ -28,12 +27,18 @@ func main() {
         fmt.Print("Enter msg: ")
         msg, _ := reader.ReadString('\n')
 
-        // publish
-        go publish(msg, producer)
+        // publish without goroutene
+        publish(msg, producer)
+
+        // publish with go routene
+        // go publish(msg, producer)
     }
 }
 
 func initProducer()(sarama.SyncProducer, error) {
+    // setup sarama log to stdout
+	sarama.Logger = log.New(os.Stdout, "", log.Ltime)
+
     // producer config
 	config := sarama.NewConfig()
     config.Producer.Retry.Max = 5
