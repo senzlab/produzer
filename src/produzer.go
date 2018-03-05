@@ -34,6 +34,7 @@ func main() {
 }
 
 func initProducer()(sarama.SyncProducer, error) {
+    // producer config
 	config := sarama.NewConfig()
     config.Producer.Retry.Max = 5
 	config.Producer.RequiredAcks = sarama.WaitForAll
