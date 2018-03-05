@@ -10,7 +10,7 @@ import (
 
 const (
     kafkaConn = "10.4.1.29:9092"
-    topic = "test"
+    topic = "senz"
 )
 
 func main() {
