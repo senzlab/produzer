@@ -8,6 +8,7 @@ RUN go get github.com/Shopify/sarama
 # env
 ENV KAFKA_HOST dev.localhost
 ENV KAFKA_PORT 9092
+ENV KAFKA_TOPIC senz
 
 # copy app
 ADD . /app
